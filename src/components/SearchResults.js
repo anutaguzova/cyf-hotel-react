@@ -1,4 +1,5 @@
 import React from "react";
+import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
 
 const SearchResults = props => {
   return (
@@ -12,6 +13,7 @@ const SearchResults = props => {
           <th scope="col">Room id</th>
           <th scope="col">Check in date</th>
           <th scope="col">Check out date</th>
+          <th scope="col">Number of nights</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +26,12 @@ const SearchResults = props => {
             <td>{el.roomId}</td>
             <td>{el.checkInDate}</td>
             <td>{el.checkOutDate}</td>
+            <td>
+              {differenceInCalendarDays(
+                new Date(el.checkOutDate),
+                new Date(el.checkInDate)
+              )}
+            </td>
           </tr>
         ))}
       </tbody>
