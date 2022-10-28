@@ -27,6 +27,17 @@
   font-size: large;
 }
 
+.cards {
+  margin: 0 auto;
+  max-width: 1250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.more_button {
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -49,9 +60,9 @@ tr {
 
 .footer {
   text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  /* position: absolute; */
+  /* bottom: 0;
+  width: 100%; */
   height: 2.5rem;
 }
 
@@ -60,5 +71,24 @@ tr {
 }
 
 .card {
-  width: 18rem;
+  margin-top: 60px;
+  width: 20rem;
+}
+
+.card h3 {
+  text-align: center;
+}
+
+.card p {
+  text-align: justify;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-primary {
+  background-color: rgb(76, 100, 148);
 }
