@@ -97,3 +97,17 @@ tr {
 .btn-primary {
   background-color: rgb(76, 100, 148);
 }
+
+tr:hover,
+:active {
+  cursor: pointer;
+}
+
+/* .red {
+  background-color: red;
+
+}
+
+.green {
+  background-color: green;
+} */

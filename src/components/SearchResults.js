@@ -1,7 +1,17 @@
 import React from "react";
+import { useState } from "react";
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
 
 const SearchResults = props => {
+  const [color, setColor] = useState("white");
+  function changeColor(e) {
+    if (e.target.parentElement.style.backgroundColor == "white") {
+      setColor((e.target.parentElement.style.backgroundColor = "grey"));
+    } else {
+      setColor((e.target.parentElement.style.backgroundColor = "white"));
+    }
+  }
+
   return (
     <table className="table">
       <thead>
@@ -18,7 +28,7 @@ const SearchResults = props => {
       </thead>
       <tbody>
         {props.results.map((el, index) => (
-          <tr key={index}>
+          <tr key={index} onClick={changeColor}>
             <th scope="row">{el.title}</th>
             <td>{el.firstName}</td>
             <td>{el.surname}</td>
