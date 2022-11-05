@@ -3,13 +3,9 @@ import { useState } from "react";
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
 
 const SearchResults = props => {
-  const [color, setColor] = useState("white");
-  function changeColor(e) {
-    if (e.target.parentElement.style.backgroundColor == "white") {
-      setColor((e.target.parentElement.style.backgroundColor = "grey"));
-    } else {
-      setColor((e.target.parentElement.style.backgroundColor = "white"));
-    }
+  const [clickedRow, setClickedRow] = useState();
+  function changeColor(index) {
+    setClickedRow(index);
   }
 
   return (
@@ -28,7 +24,11 @@ const SearchResults = props => {
       </thead>
       <tbody>
         {props.results.map((el, index) => (
-          <tr key={index} onClick={changeColor}>
+          <tr
+            key={index}
+            onClick={() => changeColor(index)}
+            className={clickedRow === index ? "grey" : "white"}
+          >
             <th scope="row">{el.title}</th>
             <td>{el.firstName}</td>
             <td>{el.surname}</td>
