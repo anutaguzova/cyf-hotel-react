@@ -8,7 +8,12 @@ const Bookings = () => {
   const [bookings, setBookings] = useState([]);
 
   const search = searchVal => {
-    console.info("TO DO!", searchVal);
+    const filterArr = bookings.filter(
+      booking =>
+        booking.firstName === searchVal || booking.surname === searchVal
+    );
+    console.log(filterArr);
+    return filterArr;
   };
 
   useEffect(() => {

@@ -2,11 +2,16 @@ import React from "react";
 import { useState } from "react";
 import SearchButton from "./SearchButton";
 
-const Search = () => {
-  const [searchInput, setSearchInput] = useState("");
+const Search = props => {
+  const [searchInput, setSearchInput] = useState(" ");
 
   function handleSearchInput(e) {
     setSearchInput(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    setSearchInput(props.search);
+    e.preventDefault();
   }
 
   return (
@@ -16,7 +21,7 @@ const Search = () => {
       </div>
       <div className="row search-wrapper">
         <div className="col">
-          <form className="form-group search-box">
+          <form className="form-group search-box" onSubmit={handleSubmit}>
             <label htmlFor="customerName">Customer name</label>
             <div className="search-row">
               <input
