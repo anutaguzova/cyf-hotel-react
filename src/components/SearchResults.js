@@ -31,14 +31,6 @@ const SearchResults = props => {
     setClickedButton(id);
   }
 
-  // useEffect(() => {
-  //   fetch(`https://cyf-react.glitch.me/customers/${id}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setClickedButton(data);
-  //     });
-  // }, []);
-
   return (
     <div>
       <table className="table">
@@ -105,7 +97,7 @@ const SearchResults = props => {
       {clickedButton > 0 ? (
         <CustomerProfile clickedButton={clickedButton} />
       ) : (
-        <div> </div>
+        <div> Loading...</div>
       )}
     </div>
   );

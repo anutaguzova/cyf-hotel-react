@@ -6,6 +6,8 @@ import FakeBookings from "../data/fakeBookings.json";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const search = searchVal => {
     const filterArr = bookings.filter(
@@ -17,18 +19,37 @@ const Bookings = () => {
   };
 
   useEffect(() => {
-    fetch("https://cyf-react.glitch.me")
-      .then(res => res.json())
-      .then(data => {
-        setBookings(data);
-      });
+    fetch("https://cyf-react.glitch.me/delayed")
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("SOmething bad with connection");
+        }
+        return res.json();
+      })
+      .then(
+        data => {
+          setBookings(data);
+          setLoading(false);
+        },
+        error => {
+          setError(error.toString());
+          console.log(error);
+          setLoading(false);
+        }
+      );
   }, []);
 
   return (
     <div className="App-content">
       <div className="container">
         <Search search={search} />
-        <SearchResults results={bookings} setBookings={setBookings} />
+        {loading ? (
+          <p>The bookings are loading...</p>
+        ) : error != "" ? (
+          <p>{error}</p>
+        ) : (
+          <SearchResults results={bookings} setBookings={setBookings} />
+        )}
       </div>
     </div>
   );
