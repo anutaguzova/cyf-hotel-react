@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
 import CustomerProfile from "./CustomerProfile";
 
@@ -29,8 +29,15 @@ const SearchResults = props => {
   function clickButton(id) {
     console.log(id);
     setClickedButton(id);
-    // console.log(setClickedButton(index))
   }
+
+  // useEffect(() => {
+  //   fetch(`https://cyf-react.glitch.me/customers/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setClickedButton(data);
+  //     });
+  // }, []);
 
   return (
     <div>

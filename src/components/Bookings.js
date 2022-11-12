@@ -13,11 +13,11 @@ const Bookings = () => {
         booking.firstName === searchVal || booking.surname === searchVal
     );
     console.log(filterArr);
-    return filterArr;
+    setBookings(filterArr);
   };
 
   useEffect(() => {
-    fetch(`https://cyf-react.glitch.me`)
+    fetch("https://cyf-react.glitch.me")
       .then(res => res.json())
       .then(data => {
         setBookings(data);
